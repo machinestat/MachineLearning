@@ -13,15 +13,15 @@ J = 0;
 grad = zeros(size(theta));
 
 % compute the cost
-
-J = (1/m)*(-y' * log(sigmoid(X * theta)) - ...
-                    (1 - y)' * log(1 - sigmoid(X * theta))) 
+h = sigmoid(X * theta);
+J = (1/m)*sum((-y' * log(h) - (1 - y)' * log(1 - h)));
 % compute the gradient                    
-grad = (1/m) * (X' * (sigmoid(X * theta) - y));
+grad = (1/m) .* (X' * (h - y));
 
-theta(1) = 0;
-J = J + (lambda/(2*m))*(theta' * theta);
-grad = grad + (lambda/m)*theta;
+temp = theta;
+temp(1) = 0;
+J = J + (lambda/(2*m))*(temp' * temp);
+grad = grad + (lambda/m) .* temp;
 
 grad = grad(:);
 
