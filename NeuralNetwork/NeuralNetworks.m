@@ -25,34 +25,13 @@ sel = sel(1:100);
 
 displayData(X(sel, :));
 
-
-
-
-%% ================ Part 2: Loading Parameters ================
-% In this part of the exercise, we load some pre-initialized 
-% neural network parameters.
-
-fprintf('\nLoading Saved Neural Network Parameters ...\n')
-
 % Load the weights into variables Theta1 and Theta2
 load('ex4weights.mat');
 
 % Unroll parameters 
 nn_params = [Theta1(:) ; Theta2(:)];
 
-%% ================ Part 3: Compute Cost (Feedforward) ================
-%  To the neural network, you should first start by implementing the
-%  feedforward part of the neural network that returns the cost only. You
-%  should complete the code in nnCostFunction.m to return cost. After
-%  implementing the feedforward to compute the cost, you can verify that
-%  your implementation is correct by verifying that you get the same cost
-%  as us for the fixed debugging parameters.
-%
-%  We suggest implementing the feedforward cost *without* regularization
-%  first so that it will be easier for you to debug. Later, in part 4, you
-%  will get to implement the regularized cost.
-%
-fprintf('\nFeedforward Using Neural Network ...\n')
+%%Compute Cost (Feedforward) ================
 
 % Weight regularization parameter (we set this to 0 here).
 lambda = 0;
@@ -66,10 +45,8 @@ fprintf(['Cost at parameters (loaded from ex4weights): %f '...
 fprintf('\nProgram paused. Press enter to continue.\n');
 pause;
 
-%% =============== Part 4: Implement Regularization ===============
-%  Once your cost function implementation is correct, you should now
-%  continue to implement the regularization with the cost.
-%
+%%Implement Regularization ===============
+% 
 
 fprintf('\nChecking Cost Function (w/ Regularization) ... \n')
 
@@ -86,11 +63,8 @@ fprintf('Program paused. Press enter to continue.\n');
 pause;
 
 
-%% ================ Part 5: Sigmoid Gradient  ================
-%  Before you start implementing the neural network, you will first
-%  implement the gradient for the sigmoid function. You should complete the
-%  code in the sigmoidGradient.m file.
-%
+%% Sigmoid Gradient  ================
+% 
 
 fprintf('\nEvaluating sigmoid gradient...\n')
 
@@ -118,7 +92,7 @@ initial_Theta2 = randInitializeWeights(hidden_layer_size, num_labels);
 initial_nn_params = [initial_Theta1(:) ; initial_Theta2(:)];
 
 
-%% =============== Part 7: Implement Backpropagation ===============
+%% Implement Backpropagation ===============
 %  Once your cost matches up with ours, you should proceed to implement the
 %  backpropagation algorithm for the neural network. You should add to the
 %  code you've written in nnCostFunction.m to return the partial
@@ -133,7 +107,7 @@ fprintf('\nProgram paused. Press enter to continue.\n');
 pause;
 
 
-%% =============== Part 8: Implement Regularization ===============
+%% Implement Regularization ===============
 %  Once your backpropagation implementation is correct, you should now
 %  continue to implement the regularization with the cost and gradient.
 %
@@ -192,7 +166,7 @@ fprintf('Program paused. Press enter to continue.\n');
 pause;
 
 
-%% ================= Part 9: Visualize Weights =================
+%% Visualize Weights =================
 %  You can now "visualize" what the neural network is learning by 
 %  displaying the hidden units to see what features they are capturing in 
 %  the data.
@@ -204,7 +178,7 @@ displayData(Theta1(:, 2:end));
 fprintf('\nProgram paused. Press enter to continue.\n');
 pause;
 
-%% ================= Part 10: Implement Predict =================
+%% Implement Predict =================
 %  After training the neural network, we would like to use it to predict
 %  the labels. You will now implement the "predict" function to use the
 %  neural network to predict the labels of the training set. This lets
